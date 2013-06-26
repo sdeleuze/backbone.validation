@@ -20,7 +20,8 @@ var BasicModel = Backbone.Model.extend({
 
 var BasicView = Backbone.View.extend({
   events: {
-    'click #submit': 'submit'
+    'click #submit': 'submit',
+    'click #unbind': 'unbind'
   },
 
   render: function() {
@@ -40,6 +41,11 @@ var BasicView = Backbone.View.extend({
     else {
       this.$('.alert-error').fadeIn();
     }
+  },
+
+  unbind: function(e){
+    e.preventDefault();
+    Backbone.Validation.unbind(this);
   }
 });
 
